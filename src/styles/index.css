@@ -12,7 +12,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.personal-container {
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.personal-container,
+.education-container,
+.experience-container {
   width: 100vw;
   height: 300px;
   display: flex;
@@ -21,7 +31,9 @@ body {
   align-items: center;
 }
 
-.personal-form {
+.personal-form,
+.education-form,
+.experience-form {
   width: 500px;
   height: 300px;
   display: flex;

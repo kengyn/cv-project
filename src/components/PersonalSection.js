@@ -76,9 +76,9 @@ class SavedForm extends Component {
   render() {
     return (
       <div className="personal-form">
-        <h1>{this.props.name}</h1>
-        <h1>{this.props.email}</h1>
-        <h1>{this.props.phone}</h1>
+        <h2>name: {this.props.name}</h2>
+        <h2>email: {this.props.email}</h2>
+        <h2>phone: {this.props.phone}</h2>
         <button onClick={this.onEdit}>edit</button>
       </div>
     );
@@ -117,7 +117,7 @@ class PersonalSection extends Component {
     if (this.state.saved === false) {
       return (
         <div className="personal-container">
-          <h1>Personal Information</h1>
+          <h2>Personal Information</h2>
           <PersonalForm
             name={this.state.name}
             email={this.state.email}
@@ -129,7 +129,7 @@ class PersonalSection extends Component {
     } else {
       return (
         <div className="personal-container">
-          <h1>Personal Information</h1>
+          <h2>Personal Information</h2>
           <SavedForm
             name={this.state.name}
             email={this.state.email}

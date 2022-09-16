@@ -1,79 +1,68 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PersonalSection from "./components/PersonalSection";
 import EducationSection from "./components/EducationSection";
 import ExperienceSection from "./components/ExperienceSection";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      email: "",
-      phone: "",
-      school: "",
-      degree: "",
-      from: "",
-      to: "",
-      company: "",
-      position: "",
-      expFrom: "",
-      expTo: "",
-      description: "",
-      saved: false,
-    };
-    this.handleEdit = this.handleEdit.bind(this);
-    this.handleOnChange = this.handleOnChange.bind(this);
-  }
+const App = () => {
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    school: "",
+    degree: "",
+    from: "",
+    to: "",
+    company: "",
+    position: "",
+    expFrom: "",
+    expTo: "",
+    description: "",
+    saved: false,
+  });
 
-  handleOnChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  }
+  const handleOnChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
 
-  handleEdit(e) {
+  const handleEdit = (e) => {
     e.preventDefault();
-    this.setState({
-      saved: !this.state.saved,
-    });
-  }
+    setState({ ...state, saved: !state.saved });
+  };
 
-  render() {
-    return (
-      <div>
-        <form>
-          <h1>CV APPLICATION</h1>
-          <PersonalSection
-            name={this.state.name}
-            email={this.state.email}
-            phone={this.state.phone}
-            saved={this.state.saved}
-            onSubmit={this.handleEdit}
-            onChange={this.handleOnChange}
-          />
-          <EducationSection
-            school={this.state.school}
-            degree={this.state.degree}
-            from={this.state.from}
-            to={this.state.to}
-            saved={this.state.saved}
-            onSubmit={this.handleEdit}
-            onChange={this.handleOnChange}
-          />
-          <ExperienceSection
-            company={this.state.company}
-            position={this.state.position}
-            expFrom={this.state.expFrom}
-            expTo={this.state.expTo}
-            description={this.state.description}
-            saved={this.state.saved}
-            onSubmit={this.handleEdit}
-            onChange={this.handleOnChange}
-          />
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <form>
+        <h1>CV APPLICATION</h1>
+        <PersonalSection
+          name={state.name}
+          email={state.email}
+          phone={state.phone}
+          saved={state.saved}
+          onSubmit={handleEdit}
+          onChange={handleOnChange}
+        />
+        <EducationSection
+          school={state.school}
+          degree={state.degree}
+          from={state.from}
+          to={state.to}
+          saved={state.saved}
+          onSubmit={handleEdit}
+          onChange={handleOnChange}
+        />
+        <ExperienceSection
+          company={state.company}
+          position={state.position}
+          expFrom={state.expFrom}
+          expTo={state.expTo}
+          description={state.description}
+          saved={state.saved}
+          onSubmit={handleEdit}
+          onChange={handleOnChange}
+        />
+      </form>
+    </div>
+  );
+};
 
 export default App;
